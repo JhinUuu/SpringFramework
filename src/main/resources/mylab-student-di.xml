@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+    <!-- Student1 -->
+    <bean id="student1" class="mylab.student.di.xml.Student">
+        <constructor-arg value="S001"/>
+        <constructor-arg value="홍길동"/>
+        <constructor-arg value="95"/>
+    </bean>
+
+    <!-- Student2 -->
+    <bean id="student2" class="mylab.student.di.xml.Student">
+        <constructor-arg value="S002"/>
+        <constructor-arg value="김철수"/>
+        <constructor-arg value="85"/>
+    </bean>
+
+    <!-- Student3 -->
+    <bean id="student3" class="mylab.student.di.xml.Student">
+        <constructor-arg value="S003"/>
+        <constructor-arg value="이영희"/>
+        <constructor-arg value="70"/>
+    </bean>
+
+    <!-- Course -->
+    <bean id="course" class="mylab.student.di.xml.Course">
+        <property name="courseId" value="C001"/>
+        <property name="courseName" value="Spring Framework"/>
+
+        <property name="students">
+            <list>
+                <ref bean="student1"/>
+                <ref bean="student2"/>
+                <ref bean="student3"/>
+            </list>
+        </property>
+    </bean>
+
+    <!-- GradeService -->
+    <bean id="gradeService" class="mylab.student.di.xml.GradeService">
+        <property name="course" ref="course"/>
+    </bean>
+
+</beans>
