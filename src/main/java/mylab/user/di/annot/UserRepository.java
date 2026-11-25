@@ -1,6 +1,12 @@
 package mylab.user.di.annot;
 
+import org.springframework.stereotype.Component;
+import org.springframework.beans.factory.annotation.Value;
+
+@Component
 public class UserRepository {
+	
+   @Value("MySQL")
    private String dbType;
     
     public UserRepository() {}
